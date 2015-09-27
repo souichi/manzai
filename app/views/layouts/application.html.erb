@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <title>Manzai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-      <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
 
 <body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <i class="fa fa-home">Manzai</i>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">新規登録</a></li>
+          <li><a href="#">ログイン</a></li>
+          <li><a href="#">ヘルプ</a></li>
+        </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+  </nav>
   <div class="container">
-    <%= yield %>
+    <div class="row">
+      <div class="col-md-10">
+        <%= yield %>
+      </div>
+      <div class="col-md-2">
+        <!-- Side bar -->
+        side bar
+      </div>
+    </div>
   </div>
 </body>
 

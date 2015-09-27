@@ -1,0 +1,8 @@
+<div class="row">
+  <%= render 'panel', script: @top %>
+</div>
+<% @scripts.each do |script| %>
+  <div class="row">
+    <%= render 'panel', script: script %>
+  </div>
+<% end %>
