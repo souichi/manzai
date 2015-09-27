@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+script1 = Script.create(title: '不動産屋')
+Sentence.create([
+  { actor: Sentence.actors[:whole], action: Sentence.actions[:message], message: '福田さん、このたびはご結婚おめでとうございます！', script: script1 },
+  { actor: Sentence.actors[:tsukkomi], action: Sentence.actions[:message], message: 'どうも～、U字工事です、よろしくお願いしま〜す', script: script1 },
+  { actor: Sentence.actors[:boke], action: Sentence.actions[:message], message: 'よろしくお願いします、いやあ', script: script1 },
+])
+

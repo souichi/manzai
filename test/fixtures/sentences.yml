@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  actor: 1
+  action: 1
+  message: MyText
+  script_id: 
+
+two:
+  actor: 1
+  action: 1
+  message: MyText
+  script_id: 
