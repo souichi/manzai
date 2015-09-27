@@ -1,0 +1,15 @@
+<h1><%= @script.title %></h1>
+<table class="table">
+  <tr>
+    <th>actor</th>
+    <th>action</th>
+    <th>message</th>
+  </tr>
+  <% @script.sentences.each do |sentence| %>
+  <tr>
+    <td><%= sentence.actor %></td>
+    <td><%= sentence.action %></td>
+    <td><%= sentence.message %></td>
+  </tr>
+  <% end %>
+</table>
