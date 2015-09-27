@@ -7,8 +7,8 @@
   </tr>
   <% @script.sentences.each do |sentence| %>
   <tr>
-    <td><%= sentence.actor %></td>
-    <td><%= sentence.action %></td>
+    <td><i class="<%= icon_class(sentence.actor) %> fa-3x"></i></td>
+    <td><i class="<%= icon_class(sentence.action) %> fa-3x"></i></td>
     <td><%= sentence.message %></td>
   </tr>
   <% end %>
