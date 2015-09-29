@@ -155,7 +155,7 @@ export class Timeline {
     message = message.replace((new RegExp("\n","g")),"");
     var sb = new string.StringBuffer(message);
     var p = 0;
-    var maxLineLength = 15;
+    var maxLineLength = 14;
     var insertText = "<br>";
     while (p < sb.length){
       p += maxLineLength;
