@@ -1,17 +1,2 @@
-<h1><%= @script.title %></h1>
-<table class="table">
-  <tr>
-    <th>actor</th>
-    <th>action</th>
-    <th>message</th>
-  </tr>
-  <% @script.sentences.each do |sentence| %>
-  <tr>
-    <td><i class="<%= icon_class(sentence.actor) %> fa-3x"></i></td>
-    <td><i class="<%= icon_class(sentence.action) %> fa-3x"></i></td>
-    <td><%= sentence.message %></td>
-  </tr>
-  <% end %>
-</table>
-
-<%= javascript_include_tag 'scripts' %>
+<script src="https://cdn.jsdelivr.net/enchantjs/0.8.1/enchant.min.js"></script>
+<%= requirejs_include_tag "scripts" %>
