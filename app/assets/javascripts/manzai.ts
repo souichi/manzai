@@ -77,8 +77,8 @@ export class Timeline {
     if (!sentence)
       return;
 
-    var scaleY = 0.5;
-    var scaleX = 0.9;
+    var scaleY = 0.7;
+    var scaleX = 1;
     switch (sentence.actor) {
       case Actor.boke:
         switch (sentence.action) {
@@ -119,34 +119,20 @@ export class Timeline {
     this.balloon = new enchant.Group();
     this.balloon.x = 0;
     this.balloon.y = 0;
-    var sprite = new enchant.Sprite(300, 233);
+    var sprite = new enchant.Sprite(300, 205);
     sprite.x = 0;
     sprite.y = 0;
     sprite.image = this.game.assets["/assets/balloon.png"];
     sprite.scale(scaleX, scaleY);
     this.balloon.addChild(sprite);
     var label = new enchant.Label(string.adjustMaxLineLength(sentence.message, 14));
-    label.x = 50;
-    label.y = 85;
+    label.x = 40;
+    label.y = 55;
     this.balloon.addChild(label);
     this.game.rootScene.addChild(this.balloon);
   }
 
   public end(): void {
-    this.game.rootScene.removeChild(this.balloon);
-    this.balloon = new enchant.Group();
-    this.balloon.x = 0;
-    this.balloon.y = 0;
-    var sprite = new enchant.Sprite(300, 233);
-    sprite.x = 0;
-    sprite.y = 0;
-    sprite.image = this.game.assets["/assets/balloon.png"];
-    sprite.scale(0.9, 0.5);
-    this.balloon.addChild(sprite);
-    var label = new enchant.Label(string.adjustMaxLineLength("ありがとうございましたー", 14));
-    label.x = 50;
-    label.y = 85;
-    this.balloon.addChild(label);
-    this.game.rootScene.addChild(this.balloon);
+    // 幕引き
   }
 }

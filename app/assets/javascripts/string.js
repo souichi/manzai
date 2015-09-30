@@ -16,8 +16,7 @@ define(["require", "exports"], function (require, exports) {
         };
         StringBuffer.prototype.insert = function (index, text) {
             var newText = (this.toString().slice(0, index) + text + this.toString().slice(index));
-            this.buffer = new Array();
-            this.buffer.push(newText);
+            this.buffer = new Array(newText);
         };
         StringBuffer.prototype.toString = function () {
             return this.buffer.join("");
