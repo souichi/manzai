@@ -24,3 +24,19 @@ export class StringBuffer {
     return this.buffer.join("");
   }
 }
+
+export function adjustMaxLineLength(message: string, maxLineLength: number): string {
+  message = message.replace((new RegExp("\r\n","g")),"");
+  message = message.replace((new RegExp("\n","g")),"");
+  var sb = new StringBuffer(message);
+  var p = 0;
+  var insertText = "<br>";
+  while (p < sb.length){
+    p += maxLineLength;
+    if (message.indexOf(sb.toString()[p], 0) > -1)
+        p++;
+    sb.insert(p, insertText);
+    p += insertText.length;
+  }
+  return sb.toString();
+}

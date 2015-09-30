@@ -106,7 +106,7 @@ define(["require", "exports", "./collections", "./string"], function (require, e
             sprite.image = this.game.assets["/assets/balloon.png"];
             sprite.scale(scaleX, scaleY);
             this.balloon.addChild(sprite);
-            var label = new enchant.Label(this.adjust(sentence.message));
+            var label = new enchant.Label(string.adjustMaxLineLength(sentence.message, 14));
             label.x = 50;
             label.y = 85;
             this.balloon.addChild(label);
@@ -123,27 +123,11 @@ define(["require", "exports", "./collections", "./string"], function (require, e
             sprite.image = this.game.assets["/assets/balloon.png"];
             sprite.scale(0.9, 0.5);
             this.balloon.addChild(sprite);
-            var label = new enchant.Label(this.adjust("ありがとうございましたー"));
+            var label = new enchant.Label(string.adjustMaxLineLength("ありがとうございましたー", 14));
             label.x = 50;
             label.y = 85;
             this.balloon.addChild(label);
             this.game.rootScene.addChild(this.balloon);
-        };
-        Timeline.prototype.adjust = function (message) {
-            message = message.replace((new RegExp("\r\n", "g")), "");
-            message = message.replace((new RegExp("\n", "g")), "");
-            var sb = new string.StringBuffer(message);
-            var p = 0;
-            var maxLineLength = 14;
-            var insertText = "<br>";
-            while (p < sb.length) {
-                p += maxLineLength;
-                if (message.indexOf(sb.toString()[p], 0) > -1)
-                    p++;
-                sb.insert(p, insertText);
-                p += insertText.length;
-            }
-            return sb.toString();
         };
         return Timeline;
     })();
