@@ -41,7 +41,12 @@ export class Timeline {
     }
 
     this.game = new enchant.Game(320, 320);
-    this.game.preload(["/assets/stage.jpg", "/assets/0124.gif", "/assets/0125.gif", "/assets/balloon.png", "/assets/curtain.jpg"]);
+    this.game.preload([
+      "/assets/stage.jpg",
+      "/assets/0124.gif",
+      "/assets/0125.gif",
+      "/assets/balloon.png",
+      "/assets/curtain.jpg"]);
     this.game.onload = () => {
       var background = new enchant.Sprite(320, 320);
       background.image = this.game.assets["/assets/stage.jpg"];

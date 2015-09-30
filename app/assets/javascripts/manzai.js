@@ -20,7 +20,12 @@ define(["require", "exports", "./collections", "./string"], function (require, e
                 this.queue.enqueue(this.script.sentences[i]);
             }
             this.game = new enchant.Game(320, 320);
-            this.game.preload(["/assets/stage.jpg", "/assets/0124.gif", "/assets/0125.gif", "/assets/balloon.png", "/assets/curtain.jpg"]);
+            this.game.preload([
+                "/assets/stage.jpg",
+                "/assets/0124.gif",
+                "/assets/0125.gif",
+                "/assets/balloon.png",
+                "/assets/curtain.jpg"]);
             this.game.onload = function () {
                 var background = new enchant.Sprite(320, 320);
                 background.image = _this.game.assets["/assets/stage.jpg"];
