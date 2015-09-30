@@ -16,6 +16,6 @@ Sentence.create([
 script2 = Script.create(title: 'ペット')
 Sentence.create([
   { actor: Sentence.actors[:tsukkomi], action: Sentence.actions[:message], message: 'どうも～、おめでとうございま～す！', script: script2 },
-  { actor: Sentence.actors[:boke], action: Sentence.actions[:message], message: 'どうも～、おめでとうございま～す、', script: script2 },
-  { actor: Sentence.actors[:tsukkomi], action: Sentence.actions[:message], message: 'いやいや、ね～、', script: script2 },
+  { actor: Sentence.actors[:boke], action: Sentence.actions[:bokeru], message: 'どうも～、おめでとうございま～す、', script: script2 },
+  { actor: Sentence.actors[:tsukkomi], action: Sentence.actions[:tsukkomu], message: 'いやいや、ね～、', script: script2 },
 ])
