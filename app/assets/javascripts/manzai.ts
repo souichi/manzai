@@ -41,7 +41,7 @@ export class Timeline {
     }
 
     this.game = new enchant.Game(320, 320);
-    this.game.preload(["/assets/stage.jpg", "/assets/0124.gif", "/assets/0125.gif", "/assets/balloon.png"]);
+    this.game.preload(["/assets/stage.jpg", "/assets/0124.gif", "/assets/0125.gif", "/assets/balloon.png", "/assets/curtain.jpg"]);
     this.game.onload = () => {
       var background = new enchant.Sprite(320, 320);
       background.image = this.game.assets["/assets/stage.jpg"];
@@ -132,7 +132,13 @@ export class Timeline {
     this.game.rootScene.addChild(this.balloon);
   }
 
-  public end(): void {
-    // 幕引き
+  public end(callback?: () => void): void {
+    var curtain = new enchant.Sprite(320, 320);
+    curtain.image = this.game.assets["/assets/curtain.jpg"];
+    curtain.x = 320;
+    curtain.y = 0;
+    this.game.rootScene.addChild(curtain);
+    curtain.tl.moveTo(0, 0, 50, enchant.Easing.QUAD_EASEINOUT);
+    callback && callback();
   }
 }

@@ -20,7 +20,7 @@ define(["require", "exports", "./collections", "./string"], function (require, e
                 this.queue.enqueue(this.script.sentences[i]);
             }
             this.game = new enchant.Game(320, 320);
-            this.game.preload(["/assets/stage.jpg", "/assets/0124.gif", "/assets/0125.gif", "/assets/balloon.png"]);
+            this.game.preload(["/assets/stage.jpg", "/assets/0124.gif", "/assets/0125.gif", "/assets/balloon.png", "/assets/curtain.jpg"]);
             this.game.onload = function () {
                 var background = new enchant.Sprite(320, 320);
                 background.image = _this.game.assets["/assets/stage.jpg"];
@@ -112,7 +112,14 @@ define(["require", "exports", "./collections", "./string"], function (require, e
             this.balloon.addChild(label);
             this.game.rootScene.addChild(this.balloon);
         };
-        Timeline.prototype.end = function () {
+        Timeline.prototype.end = function (callback) {
+            var curtain = new enchant.Sprite(320, 320);
+            curtain.image = this.game.assets["/assets/curtain.jpg"];
+            curtain.x = 320;
+            curtain.y = 0;
+            this.game.rootScene.addChild(curtain);
+            curtain.tl.moveTo(0, 0, 50, enchant.Easing.QUAD_EASEINOUT);
+            callback && callback();
         };
         return Timeline;
     })();
