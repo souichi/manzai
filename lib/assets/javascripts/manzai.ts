@@ -169,8 +169,9 @@ xhr.addEventListener("loadend", () => {
       if (timeline.playing) {
         timeline.play();
       } else {
-        timeline.end();
-        document.removeEventListener("click", onclick);
+        timeline.end(() => {
+          document.removeEventListener("click", onclick);
+        });
       }
     }
     document.addEventListener("click", onclick);
