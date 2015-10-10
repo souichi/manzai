@@ -5,4 +5,6 @@
 
 body {
   background: #fff url(background.gif);
+  -webkit-touch-callout:none; // リンク長押しのポップアップ(※1)を無効化
+  -webkit-user-select:none; // テキスト長押しの選択ボックス(※2)を無効化
 }
