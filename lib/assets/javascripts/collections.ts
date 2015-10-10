@@ -1,4 +1,4 @@
-export class Queue<T> {
+class Queue<T> {
   private data: T[];
 
   constructor() {

@@ -1,33 +1,33 @@
 /// <reference path="./typings/enchant/enchant.d.ts"/>
-import * as collections from "./collections";
-import * as string from "./string";
+/// <reference path="./collections.ts"/>
+/// <reference path="./string.ts"/>
 
-export interface IScript {
+interface IScript {
   title: string;
   sentences: ISentence[];
 }
 
-export interface ISentence {
+interface ISentence {
   actor: Actor;
   action: Action;
   message: string;
 }
 
-export const enum Actor {
+const enum Actor {
   whole,
   boke,
   tsukkomi
 }
 
-export const enum Action {
+const enum Action {
   message,
   bokeru,
   tsukkomu
 }
 
-export class Timeline {
+class Timeline {
   private script: IScript;
-  private queue: collections.Queue<ISentence>;
+  private queue: Queue<ISentence>;
   private game: enchant.Game;
   private tsukkomi: enchant.Sprite;
   private boke: enchant.Sprite;
@@ -35,7 +35,7 @@ export class Timeline {
 
   constructor(script: IScript) {
     this.script = script;
-    this.queue = new collections.Queue<ISentence>();
+    this.queue = new Queue<ISentence>();
     for (var i = 0; i < this.script.sentences.length; i++) {
       this.queue.enqueue(this.script.sentences[i]);
     }
@@ -46,8 +46,15 @@ export class Timeline {
       "/assets/0124.gif",
       "/assets/0125.gif",
       "/assets/balloon.png",
-      "/assets/curtain.jpg"]);
+      "/assets/curtain.jpg",
+      "/audios/clapping_short.mp3",
+      "/audios/vipsz3_snd3827.wav",
+      "/audios/vipsz3_snd3830.wav",
+      "/audios/se7.wav",
+      "/audios/lock3.wav"]);
     this.game.onload = () => {
+      this.game.assets["/audios/clapping_short.mp3"].clone().play();
+
       var background = new enchant.Sprite(320, 320);
       background.image = this.game.assets["/assets/stage.jpg"];
       background.x = 0;
@@ -88,6 +95,7 @@ export class Timeline {
       case Actor.boke:
         switch (sentence.action) {
           case Action.bokeru:
+            this.game.assets["/audios/vipsz3_snd3827.wav"].clone().play();
             var counter = 1;
             var timerId = setInterval(() => {
               this.boke.scaleX *= -1;
@@ -103,6 +111,7 @@ export class Timeline {
         scaleX *= -1;
         switch (sentence.action) {
           case Action.tsukkomu:
+            this.game.assets["/audios/vipsz3_snd3830.wav"].clone().play();
             var defaultX = 160 - this.tsukkomi.width - 15;
             var defaultY = 195;
             this.tsukkomi.tl.moveTo(defaultX + 10, defaultY, 10, enchant.Easing.QUAD_EASEINOUT);
@@ -130,14 +139,16 @@ export class Timeline {
     sprite.image = this.game.assets["/assets/balloon.png"];
     sprite.scale(scaleX, scaleY);
     this.balloon.addChild(sprite);
-    var label = new enchant.Label(string.adjustMaxLineLength(sentence.message, 14));
+    var label = new enchant.Label(adjustMaxLineLength(sentence.message, 14));
     label.x = 40;
     label.y = 55;
     this.balloon.addChild(label);
     this.game.rootScene.addChild(this.balloon);
+    this.game.assets["/audios/lock3.wav"].clone().play();
   }
 
   public end(callback?: () => void): void {
+    this.game.assets["/audios/clapping_short.mp3"].clone().play();
     var curtain = new enchant.Sprite(320, 320);
     curtain.image = this.game.assets["/assets/curtain.jpg"];
     curtain.x = 320;
@@ -147,3 +158,22 @@ export class Timeline {
     callback && callback();
   }
 }
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", location.href + ".json");
+xhr.addEventListener("loadend", () => {
+  if (xhr.status == 200) {
+    var script = <IScript> JSON.parse(xhr.responseText);
+    var timeline = new Timeline(script);
+    var onclick = () => {
+      if (timeline.playing) {
+        timeline.play();
+      } else {
+        timeline.end();
+        document.removeEventListener("click", onclick);
+      }
+    }
+    document.addEventListener("click", onclick);
+  }
+});
+xhr.send();

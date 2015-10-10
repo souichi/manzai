@@ -1,4 +1,4 @@
-export class StringBuffer {
+class StringBuffer {
   private buffer: Array<string>;
 
   constructor(text: string) {
@@ -24,7 +24,7 @@ export class StringBuffer {
   }
 }
 
-export function adjustMaxLineLength(message: string, maxLineLength: number): string {
+function adjustMaxLineLength(message: string, maxLineLength: number): string {
   message = message.replace((new RegExp("\r\n","g")),"");
   message = message.replace((new RegExp("\n","g")),"");
   var sb = new StringBuffer(message);
