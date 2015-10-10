@@ -1,2 +1,6 @@
 <div id="enchant-stage" class="center-block"></div>
-<%= requirejs_include_tag "scripts" %>
+<%= link_to '戻る', scripts_path %>
+
+<% content_for :body_end do %>
+　<%= javascript_include_tag "scripts" %>
+<% end %>

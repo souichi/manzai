@@ -1,0 +1,26 @@
+<%= nested_form_for(@script) do |f| %>
+  <% if @script.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@script.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <ul>
+      <% @script.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="">
+    <%= f.fields_for :sentences do |sentence| %>
+      <%= render "sentence_fields", f: sentence %>
+    <% end %>
+    <%= f.link_to_add "Add Sentence", :sentences %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

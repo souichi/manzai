@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'scripts#index'
-  resources :scripts, only: [:index, :show] do
+  resources :scripts do
     collection do
       get :hot
       get :popular

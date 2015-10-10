@@ -47,4 +47,4 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'requirejs-rails'
+gem 'nested_form'

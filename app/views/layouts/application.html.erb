@@ -30,6 +30,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">新規登録</a></li>
           <li><a href="#">ログイン</a></li>
+          <li><%= link_to '台本作成', new_script_path %></li>
           <li><a href="#">ヘルプ</a></li>
         </ul>
         </div>
@@ -47,5 +48,5 @@
     </div>
   </div>
 </body>
-
+<%= yield :body_end %>
 </html>
