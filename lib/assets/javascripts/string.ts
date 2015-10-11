@@ -32,8 +32,9 @@ function adjustMaxLineLength(message: string, maxLineLength: number): string {
   var insertText = "<br>";
   while (p < sb.length){
     p += maxLineLength;
-    if (message.indexOf(sb.toString()[p], 0) > -1)
-        p++;
+    if (message.indexOf(sb.toString()[p], 0) > -1){
+      p++;
+    }
     sb.insert(p, insertText);
     p += insertText.length;
   }

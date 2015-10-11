@@ -72,7 +72,7 @@ class Timeline {
       this.boke.x = 160 + 10;
       this.boke.y = 200;
       this.game.rootScene.addChild(this.boke);
-    }
+    };
     this.game.start();
   }
 
@@ -86,8 +86,9 @@ class Timeline {
 
   public play(): void {
     var sentence = this.queue.dequeue();
-    if (!sentence)
+    if (!sentence){
       return;
+    }
 
     var scaleY = 0.7;
     var scaleX = 1;
@@ -173,7 +174,7 @@ xhr.addEventListener("loadend", () => {
           document.removeEventListener("click", onclick);
         });
       }
-    }
+    };
     document.addEventListener("click", onclick);
   }
 });

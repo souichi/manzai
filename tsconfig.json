@@ -21,9 +21,10 @@
         "!./node_modules/**/*"
     ],
     "files": [
-        "./lib/assets/javascripts/collections.ts",
-        "./lib/assets/javascripts/manzai.ts",
-        "./lib/assets/javascripts/string.ts",
-        "./lib/assets/javascripts/typings/enchant/enchant.d.ts"
-    ]
+        "lib/assets/javascripts/collections.ts",
+        "lib/assets/javascripts/manzai.ts",
+        "lib/assets/javascripts/string.ts",
+        "lib/assets/javascripts/typings/enchant/enchant.d.ts"
+    ],
+    "exclude": []
 }
