@@ -161,7 +161,9 @@ class Timeline {
 }
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", location.href + ".json");
+var enchantStage = document.getElementById("enchant-stage");
+var url = "/scripts/" + enchantStage.dataset["scriptId"] + ".json";
+xhr.open("GET", url);
 xhr.addEventListener("loadend", () => {
   if (xhr.status == 200) {
     var script = <IScript> JSON.parse(xhr.responseText);
